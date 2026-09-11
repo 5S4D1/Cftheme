@@ -1,25 +1,40 @@
 // content.js
 
-// apply theme before page load
+let currentTheme = 'light';
+
 chrome.storage.sync.get(['selectedTheme'], (result) => {
-    const theme = result.selectedTheme || 'light';
-    
-    // add geted theme
-    document.body.className = `theme-${theme}`; 
+    currentTheme = result.selectedTheme || 'light';
+    applyTheme(currentTheme);
+    startObserver();
 });
 
-// theme change when user want
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'changeTheme') {
-        applyTheme(request.theme);
+        currentTheme = request.theme;
+        applyTheme(currentTheme);
     }
 });
 
-// apply theme
 function applyTheme(themeName) {
-    // removed all theme class
+    if (!document.body) return;
+
     document.body.classList.remove('theme-light', 'theme-dark', 'theme-focus', 'theme-shield');
-    
-    // add new theme class
+
     document.body.classList.add(`theme-${themeName}`);
+}
+
+function startObserver() {
+    const observer = new MutationObserver(() => {
+
+        if (document.body && !document.body.classList.contains(`theme-${currentTheme}`)) {
+            applyTheme(currentTheme);
+        }
+    });
+
+    observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class']
+    });
 }
