@@ -1,0 +1,79 @@
+/* styles/themes.css */
+
+/* Light Theme (Default) */
+body.theme-light {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --link-color: #0066cc;
+    --secondary-text: #555555;
+    --box-bg: #f5f5f5;
+}
+
+/* Dark Theme */
+body.theme-dark {
+    --bg-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --link-color: #4da6ff;
+    --secondary-text: #aaaaaa;
+    --box-bg: #2d2d2d;
+}
+
+/* Focus Theme */
+body.theme-focus {
+    --bg-color: #fdf6e3; /* Solarized Light */
+    --text-color: #586e75;
+    --link-color: #268bd2;
+    --secondary-text: #555555;
+    --box-bg: #e8e4db;
+}
+
+/* Shield Theme*/
+body.theme-shield {
+    --bg-color: #0a0a0a;
+    --text-color: #00ff00;
+    --link-color: #00cc00;
+    --secondary-text: #8b949e;
+    --box-bg: #161b22;
+}
+
+/* apply variable to css property */
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+body a {
+    color: var(--link-color) !important;
+}
+
+body a:visited {
+    color: var(--link-color) !important; /* Prevents visited links from turning purple */
+}
+
+body h1, body h2, body h3, body h4, body h5, body h6, .legend {
+    color: var(--text-color) !important;
+}
+
+body .roundbox, 
+body .datatable, 
+body .tableBorder, 
+body .ttable,
+body .problem-statement {
+    background-color: var(--box-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--secondary-text) !important;
+}
+
+body.theme-dark .user-green, 
+body.theme-shield .user-green {
+    color: #4ade80 !important; /* Brighter, neon green */
+}
+
+body.theme-dark .user-gray, 
+body.theme-shield .user-gray {
+    color: #9ca3af !important; /* Brighter gray */
+}
+
+body.theme-dark .user-cyan,
+body.theme-shield .user-cyan {
+    color: #22d3ee !important; /* Brighter cyan */
+}

@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Cftheme",
+  "version": "0.3.5",
+  "description": "Theme extension for Codeforces.",
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": "icons/cf.jpg"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://codeforces.com/*", 
+        "*://*.codeforces.com/*"
+      ],
+      "css": [
+        "styles/base.css", 
+        "styles/themes.css"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": ["storage", "activeTab"],
+  "author":"sheikh sadi"
+}

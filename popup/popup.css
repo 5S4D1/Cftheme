@@ -1,0 +1,78 @@
+/* popup.css */
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    width: 250px;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #4a90e2;
+    color: white;
+    padding: 12px;
+}
+
+.header .logo {
+    width: 24px;
+    height: 24px;
+    border-radius: 10%;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.main {
+    padding: 15px;
+}
+
+.section-title {
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    font-size: 14px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.theme-btn {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.theme-btn:hover {
+    background-color: #eef5ff;
+    border-color: #4a90e2;
+}
+
+.theme-btn.active {
+    background-color: #4a90e2;
+    color: white;
+    border-color: #4a90e2;
+    font-weight: bold;
+}
