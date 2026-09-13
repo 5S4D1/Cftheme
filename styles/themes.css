@@ -1,15 +1,8 @@
-/* styles/themes.css */
+/* =========================================
+   1. THEME VARIABLES
+   ========================================= */
 
-/* Light Theme (Default) */
-body.theme-light {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --link-color: #0066cc;
-    --secondary-text: #555555;
-    --box-bg: #f5f5f5;
-}
-
-/* Dark Theme */
+/* Dark Theme Variables */
 body.theme-dark {
     --bg-color: #1e1e1e;
     --text-color: #e0e0e0;
@@ -18,16 +11,16 @@ body.theme-dark {
     --box-bg: #2d2d2d;
 }
 
-/* Focus Theme */
+/* Focus Theme Variables */
 body.theme-focus {
-    --bg-color: #fdf6e3; /* Solarized Light */
+    --bg-color: #fdf6e3;
     --text-color: #586e75;
     --link-color: #268bd2;
     --secondary-text: #555555;
     --box-bg: #e8e4db;
 }
 
-/* Shield Theme*/
+/* Shield Theme Variables */
 body.theme-shield {
     --bg-color: #0a0a0a;
     --text-color: #00ff00;
@@ -36,44 +29,213 @@ body.theme-shield {
     --box-bg: #161b22;
 }
 
-/* apply variable to css property */
-body {
+
+/* =========================================
+   2. GLOBAL STYLES FOR NON-LIGHT THEMES
+   (Light theme uses original Codeforces CSS)
+   ========================================= */
+
+/* Base Background and Text */
+body:not(.theme-light) {
     background-color: var(--bg-color) !important;
     color: var(--text-color) !important;
 }
-body a {
+
+/* Links */
+body:not(.theme-light) a,
+body:not(.theme-light) a:visited {
     color: var(--link-color) !important;
 }
 
-body a:visited {
-    color: var(--link-color) !important; /* Prevents visited links from turning purple */
-}
-
-body h1, body h2, body h3, body h4, body h5, body h6, .legend {
+/* Headings */
+body:not(.theme-light) h1,
+body:not(.theme-light) h2,
+body:not(.theme-light) h3,
+body:not(.theme-light) h4,
+body:not(.theme-light) h5,
+body:not(.theme-light) h6,
+body:not(.theme-light) .legend {
     color: var(--text-color) !important;
 }
 
-body .roundbox, 
-body .datatable, 
-body .tableBorder, 
-body .ttable,
-body .problem-statement {
+/* Main Containers and Boxes */
+body:not(.theme-light) .roundbox,
+body:not(.theme-light) .datatable,
+body:not(.theme-light) .tableBorder,
+body:not(.theme-light) .ttable,
+body:not(.theme-light) .problem-statement {
     background-color: var(--box-bg) !important;
     color: var(--text-color) !important;
     border-color: var(--secondary-text) !important;
 }
 
-body.theme-dark .user-green, 
+
+/* =========================================
+   3. PROBLEM STATEMENT FIXES
+   ========================================= */
+
+/* Problem Statement Text Color */
+body:not(.theme-light) .problem-statement {
+    padding: 6px;
+}
+body:not(.theme-light) .problem-statement p,
+body:not(.theme-light) .problem-statement div,
+body:not(.theme-light) .problem-statement span,
+body:not(.theme-light) .problem-statement li {
+    color: var(--text-color) !important;
+}
+
+/* Sample Test Containers (Input/Output) */
+body:not(.theme-light) .sample-test,
+body:not(.theme-light) .sample-test .input,
+body:not(.theme-light) .sample-test .output {
+    background-color: var(--box-bg) !important;
+    color: var(--text-color) !important;
+}
+
+/* Sample Test Pre Tags (Code Blocks) */
+body:not(.theme-light) .sample-test pre {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Sample Test Titles (Input/Output Headers) */
+body:not(.theme-light) .sample-test .title,
+body:not(.theme-light) .sample-test .input .title,
+body:not(.theme-light) .sample-test .output .title {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    border-bottom: 1px dotted var(--secondary-text) !important;
+}
+
+/* Remove alternating white/gray backgrounds in sample tests */
+body:not(.theme-light) .sample-test .test-example-line,
+body:not(.theme-light) .sample-test .test-example-line-even,
+body:not(.theme-light) .sample-test .test-example-line-odd {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Also fix any inline styles that Codeforces might add */
+body:not(.theme-light) .sample-test .test-example-line[style],
+body:not(.theme-light) .sample-test .test-example-line-even[style],
+body:not(.theme-light) .sample-test .test-example-line-odd[style] {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* =========================================
+   4. TABLE FIXES (Problemset, Contests, Groups)
+   ========================================= */
+
+/* Table Containers */
+body:not(.theme-light) .datatable,
+body:not(.theme-light) .datatable table,
+body:not(.theme-light) .ttable,
+body:not(.theme-light) .ttable table,
+body:not(.theme-light) .table-for-forms {
+    background-color: var(--box-bg) !important;
+    border-color: var(--secondary-text) !important;
+}
+
+/* Table Rows and Cells */
+body:not(.theme-light) .datatable tr,
+body:not(.theme-light) .datatable td,
+body:not(.theme-light) .datatable th,
+body:not(.theme-light) .ttable tr,
+body:not(.theme-light) .ttable td,
+body:not(.theme-light) .ttable th,
+body:not(.theme-light) .table-for-forms tr,
+body:not(.theme-light) .table-for-forms td,
+body:not(.theme-light) .table-for-forms th {
+    background-color: var(--box-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--secondary-text) !important;
+}
+
+/* Table Headers */
+body:not(.theme-light) .datatable .dark,
+body:not(.theme-light) .datatable th,
+body:not(.theme-light) .ttable .dark,
+body:not(.theme-light) .ttable th {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Table Links */
+body:not(.theme-light) .datatable td a,
+body:not(.theme-light) .ttable td a {
+    color: var(--link-color) !important;
+}
+
+/* Table Inputs and Textareas */
+body:not(.theme-light) .datatable input,
+body:not(.theme-light) .ttable input,
+body:not(.theme-light) .table-for-forms input,
+body:not(.theme-light) .datatable textarea {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--secondary-text) !important;
+}
+
+
+/* =========================================
+   5. USERNAME COLORS (For Dark & Shield Themes)
+   ========================================= */
+
+/* Brighter Green for Dark/Shield */
+body.theme-dark .user-green,
 body.theme-shield .user-green {
-    color: #4ade80 !important; /* Brighter, neon green */
+    color: #4ade80 !important;
 }
 
-body.theme-dark .user-gray, 
+/* Brighter Gray for Dark/Shield */
+body.theme-dark .user-gray,
 body.theme-shield .user-gray {
-    color: #9ca3af !important; /* Brighter gray */
+    color: #9ca3af !important;
 }
 
+/* Brighter Cyan for Dark/Shield */
 body.theme-dark .user-cyan,
 body.theme-shield .user-cyan {
-    color: #22d3ee !important; /* Brighter cyan */
+    color: #22d3ee !important;
+}
+
+
+/* =========================================
+   6. CATALOG PAGE FIXES
+   ========================================= */
+
+/* Fix human-readable time format (e.g., "3 years ago") */
+body:not(.theme-light) .format-humantime,
+body:not(.theme-light) .format-time,
+body:not(.theme-light) time {
+    color: var(--secondary-text) !important;
+}
+
+/* Fix FontAwesome icons color (like .icon-file-text-alt) */
+body:not(.theme-light) .icon-file-text-alt:before,
+body:not(.theme-light) [class^="icon-"]:before,
+body:not(.theme-light) [class*=" icon-"]:before {
+    color: var(--text-color) !important;
+}
+
+/* Fix catalog entry container backgrounds */
+body:not(.theme-light) ._catalogBlogEntry,
+body:not(.theme-light) .catalog-blog-entry {
+    background-color: var(--box-bg) !important;
+    border-color: var(--secondary-text) !important;
+}
+
+/* Fix catalog entry links */
+body:not(.theme-light) ._catalogBlogEntry a,
+body:not(.theme-light) .catalog-blog-entry a {
+    color: var(--link-color) !important;
+}
+
+/* Fix catalog entry secondary text (author, tags, etc.) */
+body:not(.theme-light) ._catalogBlogEntry .secondary,
+body:not(.theme-light) ._catalogBlogEntry small,
+body:not(.theme-light) ._catalogBlogEntry .margintop {
+    color: var(--secondary-text) !important;
 }
